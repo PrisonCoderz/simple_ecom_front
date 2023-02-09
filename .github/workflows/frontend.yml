@@ -1,7 +1,13 @@
 name: FrontEnd
 on: push
+env:
+ NEXT_PUBLIC_APP_NAME: Practice Site
+ NEXT_PUBLIC_API : http://localhost:7000/api
 jobs:
   build:
+    environment: ecom  
+    env:
+     NEXT_PUBLIC_STRIPE_KEY: ${{secrets.PASSWORD2}}
     runs-on: ubuntu-latest
     steps:
       - name: action
@@ -13,6 +19,8 @@ jobs:
           key: node-dep-${{ hashFiles('**/package-lock.json') }}
       - name: deploy
         run: |
+          echo "app name:${{env.NEXT_PUBLIC_APP_NAME}}"
+          echo "app name:${{env.NEXT_PUBLIC_STRIPE_KEY}}"
           export NODE_OPTIONS="--max_old_space_size=4096"
           echo "working"
           npm ci 
