@@ -8,7 +8,7 @@ jobs:
     environment: ecom  
     env:
      NEXT_PUBLIC_STRIPE_KEY: ${{secrets.STRIPE_KEY}}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: action
         uses: actions/checkout@v3
