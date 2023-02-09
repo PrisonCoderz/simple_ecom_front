@@ -2,7 +2,7 @@ name: FrontEnd
 on: push
 env:
  NEXT_PUBLIC_APP_NAME: Practice Site
- NEXT_PUBLIC_API : http://localhost:7000/api
+ NEXT_PUBLIC_API : http://192.168.10.32/api
 jobs:
   build:
     environment: ecom  
@@ -25,3 +25,5 @@ jobs:
           echo "working"
           npm ci 
           npm run build
+          pm2 del npm 
+          pm2 start npm -- start
