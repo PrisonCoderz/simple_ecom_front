@@ -20,7 +20,7 @@ jobs:
       - name: deploy
         run: |
           echo "app name:${{env.NEXT_PUBLIC_APP_NAME}}"
-          echo "app name:${{env.NEXT_PUBLIC_STRIPE_KEY}}"
+          echo "${{env.NEXT_PUBLIC_STRIPE_KEY}}"
           export NODE_OPTIONS="--max_old_space_size=4096"
           echo "working"
           npm ci 
