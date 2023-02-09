@@ -1,0 +1,19 @@
+name: FrontEnd
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: action
+        uses: actions/checkout@v3
+      - name: cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-dep-${{ hashFiles('**/package-lock.json') }}
+      - name: deploy
+        run: |
+          export NODE_OPTIONS="--max_old_space_size=4096"
+          echo "working"
+          npm ci 
+          npm run build
